@@ -1,11 +1,31 @@
 
 # input 
-mode = 11 # use
+mode = 17 # use
 
 # Original message
+X = 16
+
 message = c(1, 2, 3,
             4, 5, 6,
-            7, 8,9)
+            7, 8,9,
+            0, 1, 2,
+            3, 4, 5)
+
+index = c(1:length(message))
+
+sum(message*index)
+
+
+c = 3
+
+
+# Lemma 2
+message_prime = c(message,c)
+index_prime = c(1:length(message_prime))
+
+sum(message_prime*index_prime) 
+
+sum(message_prime*index_prime) %% 11
 
 
 # Hash function: compute c 
@@ -103,7 +123,8 @@ sum_all = function(message, mode){
 m = c(1, 2, 3,
       4, 5, 6,
       7, 8,9,
-      10,11,12)
+      9,9,9,
+      9)
 
 n = length(m) + 1
 
@@ -124,14 +145,8 @@ sum_all = function(message, mode){
 }
 
 
+sum_all(m) %% mode
+c = sum_all(m) %% mode
 # should always equal to 0 
-(sum_all(m) + c) %% mode
-
-
-
-
-
-
-
-
+(sum_all(m) + c*n) %% mode
 
