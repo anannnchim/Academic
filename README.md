@@ -12,8 +12,8 @@ Math
 2. stochastic_process_1
 3. discrete_math
 
-Java
-1. structured_programming
+Python
+1. programming_Scientist
 2. 
 
 <!---
