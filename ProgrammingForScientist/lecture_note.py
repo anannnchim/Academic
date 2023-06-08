@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+
+-> Summary lecture note: Programming for Scientist.
+
+"""
 
 
 """ 1. List """
@@ -15,8 +20,6 @@ myList = [2,3,4,6]
 
 # make copy
 b = myList[:]
-
-
 
 """ 2. Tuple : unmutable """
 
@@ -115,10 +118,198 @@ assert double_number(2) == 4, "Correct is 4"
     1. access only local variable
     2. return all function output (explicit return None)
     3. be aware not to modify other thing unintention
+    4. usually does one thing
 
 '''
 
 """ 6. Modules """
+
+# check all search path for this file
+import sys
+for place in sys.path:
+    print(place)
+
+# temporarily append search path
+sys.path.append("/Users/nanthawat/Documents/GitHub/AnanCapital/Python/Data")
+
+# Set path (not temporarily)
+'''
+    1. add __init__.py in folder that contain function
+    2. set in terminal: export PYTHONPATH="/path/to/mypackage"
+    
+    e.g 
+    1. add __init_.py in Indicator that contain a file with many indicator 
+    2. set in terminal: export PYTHONPATH="/Users/nanthawat/Documents/GitHub/AnanCapital/Python/Indicator"
+
+'''
+# import module
+from random_data import arbitrary_timeseries
+from random_data import generate_trendy_price
+
+arbitrary_timeseries(generate_trendy_price(Nlength=180, Tlength=30, Xamplitude=40.0, Volscale=0.15)).plot()
+
+""" 7. Class """
+
+"""
+    When to use class
+    1. want to import function and use it in the context of some data
+    - use when need to pass a lots of data argument or need to call many function given the same parameter data
+"""
+class Quote():
+    def __init__(self, person, words):
+        self.person = person
+        self.words = words
+    def who(self):
+        return self.person
+    def says(self):
+        return self.words + "."
+
+a = Quote("Ananchim", "Never give up")
+a.who()
+
+
+""" 8. Files and IO """
+
+"""
+    - file are simple kind of persistent storage or a collection of data on secondary storage : test vs binary file
+    - file is stored in directory or a folder
+            
+    Type
+        1. Text file  (commonly)
+        - encoded as "ASCII text" 
+        - end a line with "\n"
+        - non-printing: tab "\t" , space "\s"
+    
+    e.g.
+        - csv file: columns seperated by either ( , or a tab)
+        
+    Path    
+        - Path: a string that locate a file in the directory: absolute -top lvel or relative - to cwd
+        - cwd is the directory that it started from.
+
+"""
+
+# find directory path 
+import os
+os.getcwd()
+os.path.exists("indicator.py")
+
+# list all file in the same directory witg
+os.listdir(os.getcwd())
+
+# Open a file and read 
+csv_file = "/Users/nanthawat/Desktop/Personal_doc/OAQ_1SampleFile/astsec.csv"
+csv_data = pd.read_csv(csv_file)
+
+# may use pickle to store the state of a variable and pick up when needed
+import pickle
+t1 = [1,2,3]
+t2 = pickle.dumps(t1)
+t3 = pickle.loads(t2)
+
+
+""" 9. Except handling """
+
+# fix a missing dict key
+word_list = ['rock', 'paper', 'scissors', 'paper']
+word_count = dict()
+
+for word in word_list:
+    try:
+        word_count[word] += 1
+    except KeyError:
+        word_count[word] = 1
+
+
+for word in word_count:
+    print( 'Word: %s Count: %s' % (word, word_count[word]))
+
+
+
+""" 10. Code Best practice """
+
+"""
+    Aspect of code quality
+        1.Commenting (explain what and why) and documentation (purpose, limitation, required parameter, side affect, assumption, return)
+        2. Variable and function naming
+        3. Code organization: avoid repetition x 3!, use function, (use function, class, modules and good code layout),
+        
+    Summarize
+        1. function: calc_something
+        2. filename: random_data_generator
+        3. constant: CONSTANT
+        
+    Readmore:
+        - PEP8
+        
+        
+"""
+# Arithmatic operation
+income = (1200
+          + 200
+          - 300)
+
+
+
+""" 11. Algorithm Complexity """
+
+"""
+    - Describe scaling behaviour: how much does runtime grow if the size of input grow by a certain factor
+    
+    Big-O notation
+    
+    - O(f(n)) meas a function grows in worst case at the rate of f(n) for large enough n
+    
+        e.g.
+        - n^2 - 2n is O(n^2)
+        - 100n is O(n)
+        -10^12 is O(1)
+        
+    * for any sorting algo that use pair-wise comparison need nlog(n) in the worst case.
+    * The computational complexity and memory is a major deterinant of data structure and algorithm for any application.    
+        
+"""
+
+
+""" 12. Design Algorithm """
+
+
+"""
+    Algorithm design paradigms refer to general approaches or strategies used in designing efficient algorithms to solve optimization and search problems.
+
+    Framework
+    1. Dynamic programming
+    - Dynamic programming is a technique used to solve problems by breaking them down into smaller overlapping subproblems. 
+    - It is particularly useful for optimization problems where the solution can be expressed as a combination of optimal solutions to subproblems.
+    
+    2. DNA pairwise sequence alignment
+    - Dynamic programming is commonly applied to solve DNA sequence alignment problems.
+    - The algorithm breaks down the problem into smaller subproblems, where each subproblem corresponds to aligning a substring of the DNA sequences. 
+    - The optimal alignment is then determined by combining the optimal solutions to these subproblems.
+    
+    Overall, dynamic programming is a powerful algorithm design paradigm that finds applications in various fields, including DNA sequence alignment.
+    It enables the efficient solution of complex problems by breaking them down into smaller overlapping subproblems and storing intermediate results for reuse.
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
