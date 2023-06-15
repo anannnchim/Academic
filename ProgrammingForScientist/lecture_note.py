@@ -21,17 +21,135 @@ myList = [2,3,4,6]
 # make copy
 b = myList[:]
 
+
+# make list of list
+n = 4
+k = 3
+C = [[0] * (n+1) for i in range(k+1)]
+
+
+10//11
+
+# get middle
+a_list = [5, 2, 9, 4,1, 7, 4]
+
+def get_middle(my_list):
+    sorted_list = sorted(my_list)
+    return sorted_list[len(sorted_list) // 2]
+
+get_middle(a_list)
+
+
+# find element
+def find_element(sequence, target):
+    '''
+    Returns the index of the target element in the sequence. 
+    If the target is not found, returns -1.
+    '''
+    if len(sequence) == 0:
+        return -1
+
+    x = 0 # index
+    while x < len(sequence):
+        if sequence[x] == target:
+            return x
+        x += 1
+
+    return -1  # element not found
+
+
+# slice as a pair
+seq = (2, 0, -2, 2)
+wsize = 2
+n = len(seq)
+
+for i in range(n - wsize + 1):
+    window = seq[i:i+wsize]
+    print(window)
+
+# recursive: unnest list
+def unnest(lst):
+    result = []
+    for element in lst:
+        if isinstance(element, list):
+            result.extend(unnest(element))  # Recursively unnest the nested list
+        else:
+            result.append(element)  # Add non-list elements to the result list
+    return result
+
+# count consec
+def count_consecutive(seq, var):
+    count = 0
+    max_count = 0
+    
+    for elem in seq:
+        if elem == var:
+            count += 1
+            if count > max_count:
+                max_count = count
+        else:
+            count = 0
+    return max_count
+
+
+# count same 
+def count_same_as_previous(seq):
+    count = 0
+    for i in range(1, len(seq)):
+        if seq[i] == seq[i - 1]:
+            count += 1
+    return count
+
+
+
+# count diff
+def count_same_as_different(seq):
+    count = 0
+    for i in range(1, len(seq)):
+        if seq[i] != seq[i - 1]:
+            count += 1
+    return count
+
+
+
+
 """ 2. Tuple : unmutable """
 
 myTuple = ("A","B")
 
 """ 3. Dict (HashMap) : no order """
 
-myDict = {"A": 1, "B": 2, "C" : 3}
+'''
+keys(): Returns a view object of all the keys in the dictionary.
+values(): Returns a view object of all the values in the dictionary.
+items(): Returns a view object of all the key-value pairs in the dictionary as tuples.
+get(key): Returns the value associated with the given key. If the key is not found, it returns None (or a default value provided as the second argument).
+pop(key): Removes the key-value pair with the specified key from the dictionary and returns the corresponding value.
+update(other_dict): Updates the dictionary by adding key-value pairs from another dictionary or an iterable of key-value pairs.
+clear(): Removes all the key-value pairs from the dictionary, making it empty.
+copy(): Returns a shallow copy of the dictionary.
+len(): return number of pairs
+'''
+
+ # create a dict
+myDict = {"A": 1, "B": 2, "C" : 3, "D" : 3}
+
+# create a dict from list
+wordlist = ["test", "your", "ability"]
+wordDict = {word : len(word) for word in wordlist}
+
+# set
+wordset = set(wordlist)
+type(wordDict)
 
 myDict.keys()
 myDict.values()
 myDict.items()
+
+
+# add 
+myDict.update({'D': '4'})  # Add a key-value pair
+myDict['key'] = 'value'  # Add a key-value pair
 
 # remove
 myDict.pop("A")
@@ -39,7 +157,60 @@ myDict.pop("A")
 # remove last item
 myDict.popitem()
 
+# check element
 
+'b' in {'a' : '01', 'b' : '02', 'c' : '03' }
+
+# check value 
+'01' in {'a' : '01', 'b' : '02', 'c' : '03' }.values()
+
+
+
+
+# count thing in dict
+def count_dict(my_dict):
+    count = dict()
+    for elem in my_dict:
+        if elem not in count:
+            count[elem] = 1
+        else:
+            count[elem] += 1
+    return count
+
+count_dict(myDict)
+
+
+
+# loop over dict
+myDict
+
+for key in myDict.keys():
+    print(key)
+
+for item in myDict.items():
+    key, value = item
+    print(key, value)
+
+
+
+# check if invertible 
+def is_invertible(adict):
+    return len(adict) == len(set(adict.values()))
+
+
+# count the different    
+def count_dict_difference(A, B):
+    difference = {}
+    
+    for key in A:
+        if key in B:
+            count_diff = A[key] - B[key]
+            if count_diff > 0:
+                difference[key] = count_diff
+        else:
+            difference[key] = A[key]
+    
+    return difference
 
 """ 4. String """
 
@@ -48,6 +219,12 @@ myString = "Nanthawat Anan?   "
 myString.strip("?")
 myString.replace("Anan", "Chim")
 myString.strip()
+myString + str(12)
+myString.replace("a", "01")
+
+# count 
+myString.count("an")
+
 
 # .format 
 symbol = "AOT"
@@ -119,8 +296,36 @@ assert double_number(2) == 4, "Correct is 4"
     2. return all function output (explicit return None)
     3. be aware not to modify other thing unintention
     4. usually does one thing
+    5. Put assertion on pre-condition. (input)
+    6. Put assertion on post condition. (ouput)
 
 '''
+
+
+# test case for function
+
+# Write at most four test cases for this function. For each test case, you must write down the input (argument to the function) and the expected return value. Your test cases should cover all relevant corner cases.
+def smallest_non_negative(number_list):
+    
+    '''
+    Argument is a list of numeric values (integer or float).
+    Returns the smallest non-negative value in the list,
+    and zero if there is no such value.'''
+
+    '''
+Test Case 1:
+
+Input: [4, 2, 9, -3, 0]
+Expected Output: 0
+Explanation: This test case checks the function's ability to correctly identify 0 as the smallest non-negative number in the list.
+
+Test Case 2:
+
+Input: [3.2, 2.9, 2.1, -1.2, -0.5]
+Expected Output: 2.1
+Explanation: This test case checks the function's ability to handle float numbers and correctly identify 2.1 as the smallest non-negative number.
+'''
+
 
 """ 6. Modules """
 
@@ -166,6 +371,37 @@ class Quote():
 
 a = Quote("Ananchim", "Never give up")
 a.who()
+
+
+# car example
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def start_engine(self):
+        print("The car engine is starting.")
+    
+    def drive(self):
+        print(f"Driving the {self.make} {self.model}.")
+    
+    def get_age(self, current_year):
+        age = current_year - self.year
+        return age
+
+# Create an instance of the Car class
+my_car = Car("Toyota", "Camry", 2022)
+
+# Calling instance methods
+my_car.start_engine()
+my_car.drive()
+
+# Calling the get_age method
+current_year = 2023
+car_age = my_car.get_age(current_year)
+print(f"The car is {car_age} years old.")
+
 
 
 """ 8. Files and IO """
@@ -254,21 +490,95 @@ income = (1200
 """ 11. Algorithm Complexity """
 
 """
-    - Describe scaling behaviour: how much does runtime grow if the size of input grow by a certain factor
+        - Describe scaling behaviour: how much does runtime grow if the size of input grow by a certain factor
+        - the overall amount of memory or space utilized by algorithm
+        - for any sorting algo that use pair-wise comparison need nlog(n) in the worst case.
+        - The computational complexity and memory is a major deterinant of data structure and algorithm for any application.    
+        - Space complextity = Auxiliary(temporary memory) + space used by input value
+    
     
     Big-O notation
-    
-    - O(f(n)) meas a function grows in worst case at the rate of f(n) for large enough n
+
+        - O(f(n)) meas a function grows in worst case at the rate of f(n) for large enough n
     
         e.g.
         - n^2 - 2n is O(n^2)
         - 100n is O(n)
         -10^12 is O(1)
+        * look at the fastest growing term.
         
-    * for any sorting algo that use pair-wise comparison need nlog(n) in the worst case.
-    * The computational complexity and memory is a major deterinant of data structure and algorithm for any application.    
+        
+    Calculating Complexity (examine it line by line on each following factors)
+        1. Assignment, bits and math operators are all basic operations.
+        2. loop and nested loop.
+        3. recursion and function invocations.
+        
+        - ignore constant. 
+        
+    
         
 """
+
+# Following are the key time and space complexities:
+'''
+    1. Constant: O(1)
+    2. Linear time: O(n)
+    3. Logarithmic time: O(n log n)
+    4. Quadratic time: O(n^2)
+    5. Exponential time: 2 ^(n)
+ุุุ    6. Factorial time: O(n!)
+'''
+    
+
+# 1. Constant: O(1) - no dependence on the input size n.
+def constant_time(list_data):
+    print(list_data)  # algo require one execution
+    
+# 2. Linear: O(n) - run time increase linearly with the length of input or iterates over size of n.
+def linear_time(list_data, size ):
+    for i in range(size): # depend on size n
+        print(i, list_data[i]) 
+ 
+# 3. Logarithm: O(log n) - when size of input data decrease each step by a certain factor. As input size grow the number of execute grows compareatively much slower.
+def binary_search(list_data, value):
+    '''
+    Binary search is a method that takes a sorted list and searches through it for the value.
+    '''
+    
+    # Pointers
+    low = 0
+    high = len(list_data) - 1
+    
+    # Repeat until the pointers low and high meet each other
+    while low <= high: # Hence, every iteration, the size of the search list shrinks by half
+        mid = (low + high) // 2  # Calculate the midpoint index
+        
+        if list_data[mid] == value:
+            return mid
+        
+        elif list_data[mid] < value:
+            low = mid + 1 
+        
+        else:
+            high = mid - 1 
+    
+    return -1
+
+# 4. Quadratic time: O(n^2) - time related to the squared size of input (increase expo), e.g. several iterate through data sets. (nested loop)
+def quadratic_time(list_data, size):
+    for i in range(size):
+        for j in range(size): # Hence, run n time j or n^2
+            print("Iteration : " ,i, "index j " ,j, " is ", list_data[j]) 
+
+
+# 5. Expoential time: O(2^n) - when n is increased by one, number of execution is double
+def fibonacci(n):
+    if(n <= 1):
+        return 1
+    else:
+        return fibonacci(n - 2) + fibonacci( n - 1)  # recursive 
+
+
 
 
 """ 12. Design Algorithm """
@@ -293,29 +603,146 @@ income = (1200
 """
 
 
+""" 13. Except handling (MAY 16) """
+
+'''
+    Kind of Error:
+        1. Syntax: grammar 
+        2. Sematic: run good but fail to do what I expect
+        3. Runtime: not enough memory, can't find file
+        
+    
+    Error Handling:
+        1. case 1,2: fix bug and make program stop. we don't want code to be robust for bug.
+        - use: assertion, and kill the program, throw an exception
+        
+        2. case 3: find a root and if we did not find, find other root
+        - e.g. ask input, if user give it wrong, ask again.
+        
+            Solution:
+                1. return distinguished value such as Nan
+                2. return tuple (normal value, exception)
+                3. throw exception: try catch, raise 
+                * Exception is (type classes) that inherit from Exception.
+                
+'''
+
+
+""" 14. Unit testing """
+'''
+    Terms:
+        - Unit testing: a function that check if a function work correctly
+        - System-level testing: usually for scientific pipeline, use real small data that already know the truth and verify the result
+            
+    Unit testing (for detect bugs)
+        1. Specify the assumption: test pre-condition input e.g. (pre-condition = input is number, test should not be string since it is not pre-condition)
+        2. identify test cases (edges case) e.g. boundary condition 
+        3. verify behavior on return value each case
+        
+'''
+
+""" 15. classes """
+
+
+
+
+# Create a list
+my_list = [1, 2, 3]
+
+# Use the extend method to add multiple elements to the list
+my_list.extend([4, 5, 6])
+print(my_list)  # Output: [1, 2, 3, 4, 5, 6]
+
+# Use the append method to add a single element to the end of the list
+my_list.append(7)
+print(my_list)  # Output: [1, 2, 3, 4, 5, 6, 7]
+
+# Use the insert method to insert an element at a specific index
+my_list.insert(0, 0)
+print(my_list)  # Output: [0, 1, 2, 3, 4, 5, 6, 7]
+
+# Use the sort method to sort the elements in ascending order
+my_list.sort()
+print(my_list)  # Output: [0, 1, 2, 3, 4, 5, 6, 7]
+
+# Use the pop method to remove and return an element at a specific index
+popped_element = my_list.pop(1)
+print(popped_element)  # Output: 1
+print(my_list)  # Output: [0, 2, 3, 4, 5, 6, 7]
+
+# Use the remove method to remove the first occurrence of a specific value
+my_list.remove(3)
+print(my_list)  # Output: [0, 2, 4, 5, 6, 7]
+
+# Use the reverse method to reverse the order of the elements in the list
+my_list.reverse()
+print(my_list)  # Output: [7, 6, 5, 4, 2, 0]
 
 
 
 
 
+# Create a dictionary
+my_dict = {"name": "John", "age": 30, "city": "New York"}
+
+# Use the keys method to get a list of all keys in the dictionary
+keys = my_dict.keys()
+print(keys)  # Output: dict_keys(['name', 'age', 'city'])
+
+# Use the values method to get a list of all values in the dictionary
+values = my_dict.values()
+print(values)  # Output: dict_values(['John', 30, 'New York'])
+
+# Use the items method to get a list of key-value pairs in the dictionary
+items = my_dict.items()
+print(items)  # Output: dict_items([('name', 'John'), ('age', 30), ('city', 'New York')])
+
+# Use the get method to retrieve the value associated with a key
+age = my_dict.get("age")
+print(age)  # Output: 30
+
+# Use the pop method to remove and return the value associated with a key
+city = my_dict.pop("city")
+print(city)  # Output: 'New York'
+print(my_dict)  # Output: {'name': 'John', 'age': 30}
+
+# Use the update method to merge another dictionary into the current dictionary
+other_dict = {"country": "USA", "occupation": "Engineer"}
+my_dict.update(other_dict)
+print(my_dict)  # Output: {'name': 'John', 'age': 30, 'country': 'USA', 'occupation': 'Engineer'}
 
 
 
 
 
+# Create a set
+my_set = {1, 2, 3, 4, 5}
 
+# Use the add method to add an element to the set
+my_set.add(6)
+print(my_set)  # Output: {1, 2, 3, 4, 5, 6}
 
+# Use the remove method to remove an element from the set
+my_set.remove(3)
+print(my_set)  # Output: {1, 2, 4, 5, 6}
 
+# Use the union method to create a new set that is the union of two sets
+other_set = {4, 5, 6, 7, 8}
+union_set = my_set.union(other_set)
+print(union_set)  # Output: {1, 2, 4, 5, 6, 7, 8}
 
+# Use the intersection method to create a new set that is the intersection of two sets
+intersection_set = my_set.intersection(other_set)
+print(intersection_set)  # Output: {4, 5, 6}
 
+# Use the difference method to create a new set that contains elements in one set but not the other
+difference_set = my_set.difference(other_set)
+print(difference_set)  # Output: {1, 2}
 
+# Use the issubset method to check if one set is a subset of another set
+subset = {1, 2}
+print(subset.issubset(my_set))  # Output: True
 
-
-
-
-
-
-
-
-
-
+# Use the issuperset method to check if one set is a superset of another set
+superset = {1, 2, 3, 4, 5, 6, 7}
+print(superset.issuperset(my_set))  # Output: True
