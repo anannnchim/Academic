@@ -91,9 +91,6 @@ By default, citations are handled by `natbib` using a numeric citation format. T
 
 Here are two sample references:
 
--   **author (year) example:** @horvath2018dna showed some really cool things. Only seems to work properly if `namedate: TRUE`.
--   **(author year) example:** This is a well known result [@ji20123d].
-
 The bibliography will appear at the end of the document.
 
 Though not normally available in the OUP LaTeX format, [CSL style files](https://www.zotero.org/styles) can also be used with the Rmarkdown adaptation by setting in the YAML header `citation_package: "default"` and defining the `csl` element to be the path towards the style file.
