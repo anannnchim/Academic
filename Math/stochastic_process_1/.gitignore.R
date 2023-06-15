@@ -12,3 +12,5 @@ _files/
 *.Rhistory
 *.Ruserdata
 .RData
+.DS_Store
+
