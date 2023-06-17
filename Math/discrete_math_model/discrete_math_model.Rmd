@@ -1,22 +1,10 @@
 ---
-title: Stochastic Process I by MIT 
+title: Discrete Math Model by ANU
 author:
   - name: Nanthawat Anancharoenpakorn
 abstract:
-  - "Learn how to model stock price by Stochastic Process I." 
-  - "**Motivation:** You can also have some paragraphs start with bold face."
-
-#boxedlist: # Not fully compatible with all document formats
-#  - First point
-#  - Second point
-competing_interests: |
-  There are no competing interest.
-author_contributions: |
-  AA did all the work. The others are just freeloaders.
-acknowledgements: |
-  This is an acknowledgement.
-
-  It consists of two paragraphs.
+  - "**Motivation: ** Learn how to develop discrete math model to solve or represent abstract thing."
+  - "**How to apply: ** When solving a problem, we need to simplify the world into a model. This course explain how to represent object, process and algorithm to solve the problem."
 
 bibliography: mybibfile.bib # Includes refs in OUP example template
 ## When using `citation_package = "default"`, a CSL file can be used
@@ -24,11 +12,11 @@ bibliography: mybibfile.bib # Includes refs in OUP example template
 output:
   rticles::oup_article:
     oup_version: 1 # 1 = 2020 CTAN OUP CLS package; 0 = 2009 OUP CLS package
-    journal: "Journal Name"
+    journal: "Discrete Math Model"
     document_style: "contemporary" # Can be contemporary, modern, traditional
     papersize: "large" # Can be large, medium, small
     #citation_package: "default" # Uncomment when using a CSL; default "natbib"
-    namedate: TRUE # Set FALSE to use numeric refs; Default FALSE
+    namedate: FALSE # Set FALSE to use numeric refs; Default FALSE
     #number_sections: FALSE # Uncomment to not number sections; default TRUE
     #number_lines: TRUE # Use `lineno` package - Default FALSE
     #number_lines_options: ["mathlines","switch"]  # Options for latex lineno package.
@@ -63,9 +51,9 @@ knitr::opts_chunk$set(
 options(knitr.table.format = "latex") # For kable tables to write LaTeX table directly
 ```
 
-# Why are we learning this?
+# 1) Representation
 
-content
+
 
 ## A subsection
 
@@ -90,10 +78,9 @@ A bullet list:
 
 Content
 
-
 # A3 Intro
 
-here is the example of equation 
+here is the example of equation
 
 $$
 E=mc^2
@@ -108,7 +95,6 @@ An equation with a label for cross-referencing:
 \int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = 1
 \end{equation}
 ```
-
 # A4 Intro
 
 The code below creates a figure. The code is included in the output because `echo=TRUE`.
