@@ -13,4 +13,3 @@ _files/
 *.Ruserdata
 .RData
 .DS_Store
-
