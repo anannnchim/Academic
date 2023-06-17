@@ -51,73 +51,48 @@ knitr::opts_chunk$set(
 options(knitr.table.format = "latex") # For kable tables to write LaTeX table directly
 ```
 
-# 1) Representation
+# Representation
 
+## Object
 
+1.  set = $\{ 1, 2, 3\}$
 
-## A subsection
+2.  multiset $= \{1,2,3,3\}$
 
-A numbered list:
+3.  sequence = (1,2,3,4)
 
-1)  First point
-2)  Second point
-    -   Subpoint
+4.  tuple = (1,2)
 
-A bullet list:
+5.  matrix $A = \begin{bmatrix} a_1 & a_2 \\ b_1 & b_2 \end{bmatrix}$
 
--   First point
--   Second point
+## Relation
 
-## Notes
+1.  **Relation** is a relation $R$ from object a to Object b or $a R b$
+2.  **Function** is a special type of relation. A function $f(x) = x$
 
--   
+# Graph Theory
 
--   
+## Object
 
-# A2 Intro
+1.  vertex
 
-Content
+## Object
 
-# A3 Intro
+2.  edge
+3.  direct edge
+4.  weight edge
 
-here is the example of equation
+# Code
 
-$$
-E=mc^2
-$$
-
-An inline equation: $y=ax+b$
-
-An equation with a label for cross-referencing:
-
-```{=tex}
-\begin{equation}\label{eq:eq1}
-\int^{r_2}_0 F(r,\varphi){\rm d}r\,{\rm d}\varphi = 1
-\end{equation}
+```{r, echo = TRUE}
+set = c(1,2,3)
+multiset= c(1,2,3,3)
+sequence = 1:10
+sequence = seq(from = 1, to = 10, by = 1)
+tuple = list(1, "word", TRUE)
+matrix = matrix(c("a1","a2", "b1", "b2"),
+                nrow = 2, ncol = 2, byrow = FALSE)
 ```
-# A4 Intro
-
-The code below creates a figure. The code is included in the output because `echo=TRUE`.
-
-```{r fig1, fig.cap="This is the first figure.",echo=TRUE}
-plot(1:10,main="Some data",xlab="Distance (cm)",
-     ylab="Time (hours)")
-```
-
-You can reference this figure as follows: Fig. \ref{fig:fig1}.
-
-## Figures spanning two-columns
-
-Figures can span two columns be setting `fig.env="figure*"`.
-
-```{r fig2, fig.cap="This is a wide figure.",fig.env="figure*"}
-plot(1:5,pch=19,main="Some wide data",
-     xlab="Distance (cm)",ylab="Time (hours)")
-```
-
-Reference to second figure: Fig. \ref{fig:fig2}
-
-# A5 Intro
 
 ## Generate a table using `xtable`
 
@@ -164,24 +139,4 @@ knitr::kable(df,caption="This is a wide kable table.",
              booktabs=TRUE,label="tab3")
 ```
 
-# Cross-referencing sections
-
-You can cross-reference sections and subsections as follows: Section \ref{literature-citations} and Section \ref{a-subsection}.
-
-***Note:*** the last section in the document will be used as the section title for the bibliography.
-
-For more portable and flexible referencing of sections, equations, figures and tables, use [`bookdown::pdf_document2`](https://github.com/rstudio/bookdown) with YAML header option `base_format: rticles::oup_article`.
-
-# A6 Intro
-
-::: {.appendices latex="true"}
-# Section title of first appendix
-
-blabla
-
-## Subsection title of first appendix
-
-and so on....
-:::
-
-# References
+# 
