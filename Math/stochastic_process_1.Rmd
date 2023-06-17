@@ -1,5 +1,5 @@
 ---
-title: Stochastic Process I by MIT test
+title: Stochastic Process I by MIT 
 author:
   - name: Nanthawat Anancharoenpakorn
 abstract:
