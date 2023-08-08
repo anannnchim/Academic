@@ -6,7 +6,7 @@ This repository contains all the courses that I've studied during my academic jo
 
 The following is a list of courses included in this repository:
 
-Semestet 1 
+Semester 1 
 1. Discrete Math, 
 2. Programming for Scientist
 
