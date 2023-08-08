@@ -1,2 +1,2 @@
-**Master of Computing **
-**Quantitative Finance **
+- Master of Computing
+- Quantitative Finance 
