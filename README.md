@@ -7,22 +7,12 @@ This repository contains all the courses that I've studied during my academic jo
 The following is a list of courses included in this repository:
 
 Semestet 1 
+1. Discrete Math, 
+2. Programming for Scientist
 
-1. Course 1 - [link to folder]
-2. Course 2 - [link to folder]
-3. Course 3 - [link to folder]
+Semester 2
+1. Structured Programming
+2. Introduction to Machine Learning
+3. Information Theory
 
 
-(Replace "Course 1", "Course 2", etc., with the actual course names and link them to the respective folders.)
-
-## Usage
-
-Feel free to explore the courses and use any resources for your learning. If you find any errors or have suggestions, please raise an issue in this repository.
-
-## Contributing
-
-Contributions are welcomed. If you have any notes, solutions, or other academic resources that you think would be helpful, feel free to open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
