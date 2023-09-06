@@ -6,6 +6,12 @@ This repository contains all the courses that I've studied during my academic jo
 
 The following is a list of courses included in this repository:
 
+MIT
+1. Linear Algebra
+
+Text
+1. Introduction to Probability
+
 Semester 1 
 1. Discrete Math, 
 2. Programming for Scientist
