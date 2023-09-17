@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 1.  Learn 2 hours each day
 2.  Experiment and note in here.
 3.  Stucture of content {concept, exercise, application}
+4.  Try strategy in podcast.<https://eccm.com.au/2021/04/25/losing-money-with-a-winning-system/>
 
 ## 1. Discrete Probability Distribution
 
@@ -249,12 +250,87 @@ print(paste("C wins:", results$Wins_C / 1000, "times"))
 
 ```
 
+[**Application 1: Betting Fix Size**]{.underline}
+
+```{r}
+
+# There are two outcome
+
+betting = function(payoff, win_chance, n){
+  
+  outcomes <- c()
+  equity = 100
+  
+  for(i in 1:n){
+    
+     rand <- runif(1, min = 0, max = 1)
+     
+     if(rand < win_chance){
+       outcomes = c(outcomes, payoff)
+     }else{
+       outcomes = c(outcomes, -1)
+     }
+  
+     
+  }
+  return(outcomes)
+  
+}
+
+
+
+# User Input for the number of coin tosses and probability of heads
+payoff <- as.integer(readline(prompt = "Enter the payoff: "))
+win_chance <- as.numeric(readline(prompt = "Enter the probability of winning: "))
+n <- as.integer(readline(prompt = "Enter the number of trade: "))
+
+# Plot and expectancy
+outcome = betting(payoff,win_chance,n)
+expectation = (payoff*win_chance - (1-win_chance)*1); paste("Expectation: " ,expectation)
+plot(100 + cumsum(outcome), type = "l")
+hist(outcome)
+
+```
+
+```{r}
+
+payoff = 8
+win_chance = 0.2
+n = 100
+n_streams = 100  # Number of streams
+
+
+# Initialize an empty matrix to store all streams
+all_streams <- matrix(nrow = n, ncol = n_streams)
+
+for(i in 1:n_streams){
+  all_streams[,i] <- cumsum(betting(payoff, win_chance, n))
+}
+
+
+# plot
+matplot(1:n, all_streams,type = 'l')
+expectation = (payoff*win_chance - (1-win_chance)*1); paste("Expectation: " ,expectation)
+
+
+```
+
+```{r}
+
+```
+
 ### 1.2 Discrete Probability Distributions
 
-You can also embed plots, for example:
+\>\>\> PENDING \<\<\<
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+
+
+
+```
