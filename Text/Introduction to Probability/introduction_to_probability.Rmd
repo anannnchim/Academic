@@ -292,10 +292,12 @@ hist(outcome)
 
 ```
 
+[Check uncertainty of possible outcome stream]{.underline}
+
 ```{r}
 
-payoff = 8
-win_chance = 0.2
+payoff = 1
+win_chance = 0.5
 n = 100
 n_streams = 100  # Number of streams
 
@@ -311,11 +313,6 @@ for(i in 1:n_streams){
 # plot
 matplot(1:n, all_streams,type = 'l')
 expectation = (payoff*win_chance - (1-win_chance)*1); paste("Expectation: " ,expectation)
-
-
-```
-
-```{r}
 
 ```
 
